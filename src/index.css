@@ -1,10 +1,13 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Caveat:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 40 33% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -13,16 +16,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 210 64% 36%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 42 87% 55%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 25 84% 56%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -35,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +92,50 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-ghibli-cream text-foreground font-serif;
+    background-image: url('/paper-texture.png');
+    background-repeat: repeat;
+    background-size: 500px;
+  }
+}
+
+/* Custom Ghibli-inspired styles */
+@layer components {
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-ghibli-sunset after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .storybook-border {
+    @apply border-2 border-ghibli-earth rounded-lg shadow-md relative overflow-hidden;
+    box-shadow: 0 10px 15px -3px rgba(162, 123, 92, 0.1), 0 4px 6px -2px rgba(162, 123, 92, 0.05);
+  }
+
+  .storybook-page {
+    @apply bg-ghibli-cream rounded-lg relative p-8 md:p-12;
+    background-image: url('/paper-texture.png');
+    background-blend-mode: overlay;
+    box-shadow: inset 0 0 30px rgba(162, 123, 92, 0.1);
+  }
+  
+  .floating-cloud {
+    @apply absolute pointer-events-none opacity-75;
+    animation: drift 30s linear infinite;
+  }
+  
+  .hand-drawn-button {
+    @apply relative px-6 py-3 text-white font-handwritten text-lg transition-all duration-300 overflow-hidden;
+    background-color: #738C79;
+    box-shadow: 0 4px 0 #5C7161;
+    transform: translateY(0);
+  }
+  
+  .hand-drawn-button:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #5C7161;
+  }
+  
+  .hand-drawn-button:active {
+    transform: translateY(4px);
+    box-shadow: none;
   }
 }
