@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import SubmitStory from "./pages/SubmitStory";
 import CommunityStories from "./pages/CommunityStories";
 import WinnersPage from "./pages/WinnersPage";
+import ApplyPage from "./pages/ApplyPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/submit" element={<SubmitStory />} />
           <Route path="/community" element={<CommunityStories />} />
           <Route path="/winners" element={<WinnersPage />} />
+          <Route path="/apply" element={<ApplyPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

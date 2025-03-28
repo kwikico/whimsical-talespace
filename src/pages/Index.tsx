@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import FeaturedStory from '../components/FeaturedStory';
 import StoryCard from '../components/StoryCard';
 import ContestInfo from '../components/ContestInfo';
+import HiringSection from '../components/HiringSection';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -87,6 +88,8 @@ const Index = () => {
             </div>
           </div>
         </section>
+        
+        <HiringSection />
       </main>
       
       <Footer />

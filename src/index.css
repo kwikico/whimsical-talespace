@@ -139,3 +139,25 @@
     box-shadow: none;
   }
 }
+
+/* Custom keyframes for new animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+.transition-colors {
+  transition-property: background-color, background-image, color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 1000ms;
+}
+
+.duration-3000 {
+  transition-duration: 3000ms;
+}

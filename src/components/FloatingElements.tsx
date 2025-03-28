@@ -2,7 +2,7 @@
 import React from 'react';
 
 interface FloatingElementsProps {
-  type?: 'clouds' | 'leaves' | 'lanterns';
+  type?: 'clouds' | 'leaves' | 'lanterns' | 'fireflies' | 'petals';
   density?: 'low' | 'medium' | 'high';
 }
 
@@ -15,7 +15,7 @@ const FloatingElements: React.FC<FloatingElementsProps> = ({
     switch(density) {
       case 'low': return 3;
       case 'medium': return 6;
-      case 'high': return 10;
+      case 'high': return 12;
       default: return 6;
     }
   };
@@ -28,6 +28,7 @@ const FloatingElements: React.FC<FloatingElementsProps> = ({
     const delay = `${Math.random() * 15}s`;
     const size = 30 + Math.random() * 40; // Size between 30-70px
     const top = `${10 + Math.random() * 70}%`;
+    const left = `${Math.random() * 100}%`;
     const opacity = 0.3 + Math.random() * 0.5; // Opacity between 0.3-0.8
     
     if (type === 'clouds') {
@@ -50,19 +51,22 @@ const FloatingElements: React.FC<FloatingElementsProps> = ({
         </div>
       );
     } else if (type === 'leaves') {
+      const rotation = Math.random() * 360;
+      const swayDuration = 5 + Math.random() * 5;
+      
       elements.push(
         <div 
           key={i}
           className="absolute pointer-events-none animate-float"
           style={{ 
             top, 
-            left: `${Math.random() * 100}%`,
+            left,
             width: `${size / 2}px`, 
             height: `${size / 2}px`,
             opacity,
             animationDelay: delay,
-            animationDuration: `${5 + Math.random() * 5}s`,
-            transform: `rotate(${Math.random() * 360}deg)`,
+            animationDuration: `${swayDuration}s`,
+            transform: `rotate(${rotation}deg)`,
           }}
         >
           <svg viewBox="0 0 100 100" fill="#738C79" opacity={opacity}>
@@ -80,7 +84,7 @@ const FloatingElements: React.FC<FloatingElementsProps> = ({
           className="absolute pointer-events-none animate-float"
           style={{ 
             top, 
-            left: `${Math.random() * 100}%`,
+            left,
             width: `${size / 2}px`, 
             height: `${size}px`,
             opacity,
@@ -93,9 +97,69 @@ const FloatingElements: React.FC<FloatingElementsProps> = ({
             <div 
               className="w-full h-4/5 rounded-3xl" 
               style={{ backgroundColor: `hsl(${hue}, 90%, ${lightness}%)` }}
-            ></div>
+            >
+              <div className="w-full h-full flex items-center justify-center opacity-70">
+                <div className="w-1/3 h-1/3 rounded-full bg-white/80 blur-[2px]"></div>
+              </div>
+            </div>
           </div>
         </div>
+      );
+    } else if (type === 'fireflies') {
+      const size = 3 + Math.random() * 4;
+      const glowSize = size * (2 + Math.random() * 2);
+      const animDuration = 2 + Math.random() * 3;
+      
+      elements.push(
+        <div 
+          key={i}
+          className="absolute pointer-events-none"
+          style={{ 
+            top, 
+            left,
+            width: `${glowSize}px`, 
+            height: `${glowSize}px`,
+            opacity: 0.1 + Math.random() * 0.6,
+            animation: `pulse ${animDuration}s infinite alternate ease-in-out, float ${8 + Math.random() * 7}s infinite ease-in-out`,
+            animationDelay: delay,
+            backgroundColor: '#FFE9A1',
+            boxShadow: '0 0 10px 2px rgba(255, 233, 161, 0.7)',
+            borderRadius: '50%',
+          }}
+        >
+          <div 
+            className="w-full h-full rounded-full"
+            style={{
+              backgroundColor: '#FFFAE0',
+              opacity: 0.8,
+              transform: 'scale(0.6)',
+            }}
+          ></div>
+        </div>
+      );
+    } else if (type === 'petals') {
+      const rotation = Math.random() * 360;
+      const pinkHue = 340 + Math.random() * 20;
+      const saturation = 70 + Math.random() * 20;
+      const lightness = 80 + Math.random() * 15;
+      
+      elements.push(
+        <div 
+          key={i}
+          className="absolute pointer-events-none"
+          style={{ 
+            top, 
+            left,
+            width: `${10 + Math.random() * 8}px`, 
+            height: `${15 + Math.random() * 10}px`,
+            opacity: 0.5 + Math.random() * 0.5,
+            backgroundColor: `hsl(${pinkHue}, ${saturation}%, ${lightness}%)`,
+            borderRadius: '100% 0 100% 0',
+            transform: `rotate(${rotation}deg)`,
+            animation: `float ${8 + Math.random() * 6}s infinite ease-in-out, sway ${4 + Math.random() * 3}s infinite ease-in-out`,
+            animationDelay: delay,
+          }}
+        ></div>
       );
     }
   }
