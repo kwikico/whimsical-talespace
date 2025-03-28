@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingElements from './FloatingElements';
+import JapaneseElements from './JapaneseElements';
 
 // Time-based themes for the hero section
 type TimeTheme = 'dawn' | 'day' | 'sunset' | 'night';
@@ -64,6 +65,36 @@ const Hero = () => {
   return (
     <div className={`relative min-h-[650px] flex items-center py-20 overflow-hidden transition-colors duration-3000 bg-gradient-to-b ${themeStyles.bgGradient}`}>
       <FloatingElements type={themeStyles.floatingType as 'clouds' | 'leaves' | 'lanterns'} density="medium" />
+      
+      {/* Japanese decorative elements based on theme */}
+      {timeTheme === 'dawn' && (
+        <>
+          <JapaneseElements type="torii" position="bottom-left" size="large" opacity={0.7} />
+          <JapaneseElements type="mountain" position="bottom-right" size="large" opacity={0.4} />
+        </>
+      )}
+      
+      {timeTheme === 'day' && (
+        <>
+          <JapaneseElements type="sakura" position="top-right" size="medium" opacity={0.6} />
+          <JapaneseElements type="sakura" position="bottom-left" size="small" opacity={0.6} />
+          <JapaneseElements type="pagoda" position="bottom-right" size="medium" opacity={0.4} />
+        </>
+      )}
+      
+      {timeTheme === 'sunset' && (
+        <>
+          <JapaneseElements type="wave" position="bottom-left" size="medium" opacity={0.5} />
+          <JapaneseElements type="torii" position="bottom-right" size="medium" opacity={0.6} color="#FF7043" />
+        </>
+      )}
+      
+      {timeTheme === 'night' && (
+        <>
+          <JapaneseElements type="mountain" position="bottom-left" size="large" opacity={0.3} color="#2C3E50" />
+          <JapaneseElements type="pagoda" position="bottom-right" size="small" opacity={0.5} color="#34495E" />
+        </>
+      )}
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">

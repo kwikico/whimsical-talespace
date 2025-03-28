@@ -7,6 +7,7 @@ import StoryCard from '../components/StoryCard';
 import ContestInfo from '../components/ContestInfo';
 import HiringSection from '../components/HiringSection';
 import Footer from '../components/Footer';
+import JapaneseElements from '../components/JapaneseElements';
 
 const Index = () => {
   // Sample data for featured story
@@ -43,13 +44,19 @@ const Index = () => {
   ];
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       <Navbar />
+      
+      {/* Decorative Japanese elements for the entire page */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <JapaneseElements type="sakura" position="top-right" size="small" opacity={0.2} />
+        <JapaneseElements type="wave" position="bottom-left" size="large" opacity={0.1} />
+      </div>
       
       <main className="flex-grow">
         <Hero />
         
-        <section className="py-16">
+        <section className="py-16 relative">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-serif text-center text-ghibli-forest mb-2">
               Featured Story
@@ -60,11 +67,16 @@ const Index = () => {
             
             <FeaturedStory {...featuredStory} />
           </div>
+          
+          {/* Decorative element for this section */}
+          <div className="absolute right-0 bottom-0 transform translate-x-1/3 translate-y-1/4 opacity-10 pointer-events-none">
+            <JapaneseElements type="torii" size="large" />
+          </div>
         </section>
         
         <ContestInfo />
         
-        <section className="py-16">
+        <section className="py-16 relative">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-serif text-center text-ghibli-forest mb-2">
               Community Stories
@@ -86,6 +98,11 @@ const Index = () => {
                 View All Stories
               </button>
             </div>
+          </div>
+          
+          {/* Decorative element for this section */}
+          <div className="absolute left-0 top-1/2 transform -translate-x-1/3 -translate-y-1/2 opacity-10 pointer-events-none">
+            <JapaneseElements type="pagoda" size="large" />
           </div>
         </section>
         
